@@ -1,0 +1,6 @@
+---
+wkstn_utilities:
+  - htop
+  - tmux
+
+# vim: ft=ansible

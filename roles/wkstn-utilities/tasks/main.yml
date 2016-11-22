@@ -1,0 +1,7 @@
+---
+- name: Install workstation utilities
+  apt:
+    name="{{ item }}"
+  with_items: "{{ wkstn_utilities }}"
+
+# vim: ft=ansible
