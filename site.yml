@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: local
+
+  roles:
+    - role: wkstn-user
+      wkstn_user:
+        name: Ben Tomasik
+        email: ben@tomasik.io
+        username: ben
+
+# vim: ft=ansible
