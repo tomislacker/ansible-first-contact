@@ -1,0 +1,59 @@
+[alias]
+    # Shorthand aliases
+    br = branch
+    ci = commit
+    ciae = commit --amend
+    ciane = commit --amend --no-edit
+    cl = clone
+    co = checkout
+    dc = "!sh -c 'git --no-pager diff --cached'"
+    df = diff
+    i = "!sh -c 'git check-ignore -v **/*'"
+    l  = log --name-status
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lp = log -p
+    st = status
+
+    # Stash aliases
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+
+    # Merges
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+    # Remotes
+    rem="!git config -l | grep remote.*url | tail -n +2"
+
+    # More complicated aliases
+    abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+    changes=diff --name-status -r
+    diffstat = diff --stat -r
+    diffstatr = "!sh -c 'git --no-pager diff --stat -r' -"
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lgg = log --graph --decorate --oneline --color --all
+    prune-all = !git remote | xargs -n 1 git remote prune
+    last = "!sh -c 'git --no-pager log -1 HEAD' -"
+    llast = "!sh -c 'git --no-pager log -2 HEAD'"
+
+    tempig = update-index --assume-unchanged
+    notempig = update-index --no-assume-unchanged
+
+    brm = "branch --merged master --all"
+    brum = "branch --no-merged master --all"
+
+    # List branches & last commit date/author
+    recentref = "for-each-ref --sort=-committerdate --format='%(color:yellow)%(committerdate)\t%(color:green)%(authorname)\t%(color:white)%(refname:short)'"
+
+[user]
+    email = {{ wkstn_user.email }}
+    name = {{ wkstn_user.name }}
+[http]
+    postBuffer = 524288000
+[push]
+    default = simple
+[core]
+	excludesfile = /home/{{ wkstn_user.username }}/.gitignore
+[fetch]
+	prune = true
