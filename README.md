@@ -3,5 +3,5 @@
 ## Usage
 
 ```sh
-ansible-playbook -i localhost, site.yml --diff -vv
+ansible-playbook -i hosts site.yml --diff -vv
 ```
