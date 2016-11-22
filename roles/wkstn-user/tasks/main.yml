@@ -1,0 +1,10 @@
+---
+- name: Install gitconfig
+  template:
+    src=gitconfig.j2
+    dest="/home/{{ wkstn_user.username }}/.gitconfig"
+    owner="{{ wkstn_user.username }}"
+    group="{{ wkstn_user.username }}"
+    mode=0644
+
+# vim: ft=ansible
